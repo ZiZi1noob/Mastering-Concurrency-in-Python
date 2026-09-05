@@ -25,7 +25,7 @@ def is_prime(x):
 
     return x
 
-def concurrent_solve(n_workers):
+def concurrent_solve(n_workers, input):
     print('Number of workers: %i.' % n_workers)
 
     start = timer()
@@ -49,8 +49,13 @@ def concurrent_solve(n_workers):
     print('Took: %.4f seconds.' % duration)
 
 
-input = [i for i in range(10 ** 13, 10 ** 13 + 1000)]
+def main():
+    input = [i for i in range(10 ** 13, 10 ** 13 + 1000)]
 
-for n_workers in range(1, multiprocessing.cpu_count() + 1):
-    concurrent_solve(n_workers)
-    print('_' * 20)
+    for n_workers in range(1, multiprocessing.cpu_count() + 1):
+        concurrent_solve(n_workers, input)
+        print('_' * 20)
+
+
+if __name__ == '__main__':
+    main()
